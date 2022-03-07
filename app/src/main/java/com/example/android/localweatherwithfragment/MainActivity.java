@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         loadData();
     }
 
+
     private void loadData() {
         DtoRepository
                 .getDto(ParameterClass.cityName,ParameterClass.unitGroup,ParameterClass.include,ParameterClass.key,ParameterClass.contentType)
@@ -39,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .as(autoDisposable(from(this)))
                 .subscribe(this::onSuccess, this::onError);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ///自动取消网络请求
     }
 
     private void onSuccess(Dto dto) {

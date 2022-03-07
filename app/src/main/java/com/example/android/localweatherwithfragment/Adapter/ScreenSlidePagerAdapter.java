@@ -25,11 +25,7 @@ public class ScreenSlidePagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        Fragment frag_new = null;
-        if (position == 0) frag_new = currentConditionFragment();
-        if (position == 1) frag_new = daysFragment();
-        assert frag_new != null;
-        return frag_new;
+        return position == 0 ? currentConditionFragment() : daysFragment();
     }
 
     private Fragment currentConditionFragment() {
