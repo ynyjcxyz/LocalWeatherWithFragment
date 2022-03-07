@@ -40,7 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder>{
         holder.datetime_by_days.setText(itemList.get(position).datetime());
         holder.conditions_by_days.setText(itemList.get(position).conditions());
         Glide.with(context)
-                .load("https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/1st%20Set%20-%20Color/" + itemList.get(position).icon() + ".png")
+                .load(ParameterClass.iconBaseUrl + ParameterClass.second_set_color + itemList.get(position).icon() + ".png")
                 .into(holder.icon_by_days);
         holder.temp_max.setText(itemList.get(position).tempmax()+"\u2103 \u21E1");
         holder.temp_min.setText(itemList.get(position).tempmin()+"\u2103 \u21E3");

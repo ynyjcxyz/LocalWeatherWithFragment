@@ -14,14 +14,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
-    private final String[] fragmentTitles = new String[]
-            {"CurrentConditions", "Days"};
-    public static final String cityName = "Seattle";
-    public static final String unitGroup = "metric";
-    public static final String include = "days,current";
-    public static final String key = "UDR74JLWCB3CRZBZQSTL3AVQH";
-    public static final String contentType = "json";
-
     TabLayout tabLayout;
     ViewPager2 viewPager;
 
@@ -39,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadData() {
         DtoRepository
-                .getDto(cityName,unitGroup,include,key,contentType)
+                .getDto(ParameterClass.cityName,ParameterClass.unitGroup,ParameterClass.include,ParameterClass.key,ParameterClass.contentType)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .as(autoDisposable(from(this)))
@@ -59,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void bindTab() {
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) ->
-                tab.setText(fragmentTitles[position])).attach();
+                tab.setText(ParameterClass.fragmentTitles[position])).attach();
     }
 
     private void onError(Throwable throwable) {
