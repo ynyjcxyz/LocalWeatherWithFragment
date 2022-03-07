@@ -4,11 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android_Interface/LocalWeatherWithFragment/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2665" />
-        <entry key="..\:/Android_Interface/LocalWeatherWithFragment/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Android_Interface/LocalWeatherWithFragment/app/src/main/res/layout/activity_main.xml" value="0.13" />
         <entry key="..\:/Android_Interface/LocalWeatherWithFragment/app/src/main/res/layout/days_condition_list_item.xml" value="0.18110435663627153" />
         <entry key="..\:/Android_Interface/LocalWeatherWithFragment/app/src/main/res/layout/fragment_current_condition.xml" value="0.12" />
         <entry key="..\:/Android_Interface/LocalWeatherWithFragment/app/src/main/res/layout/fragment_days_condition.xml" value="0.18110435663627153" />
-        <entry key="..\:/Android_Interface/LocalWeatherWithFragment/app/src/main/res/layout/list_item_for_days.xml" value="0.12" />
+        <entry key="..\:/Android_Interface/LocalWeatherWithFragment/app/src/main/res/layout/list_item_for_days.xml" value="0.1" />
       </map>
     </option>
   </component>

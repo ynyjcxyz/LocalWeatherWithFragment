@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/list_item"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -20,8 +19,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textSize="12sp"
-            tools:text="2022-03-04"
-            tools:ignore="NestedWeights" />
+            tools:ignore="NestedWeights"
+            tools:text="2022-03-04" />
 
         <TextView
             android:id="@+id/conditions_by_days"
@@ -36,9 +35,9 @@
     <ImageView
         android:id="@+id/icon_by_days"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="64dp"
-        android:gravity="center_horizontal"/>
+        android:layout_weight="1"
+        android:gravity="center_horizontal" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -53,8 +52,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textSize="12sp"
-            tools:text="20 \u2103 \u21E1"
-            tools:ignore="NestedWeights" />
+            tools:ignore="NestedWeights"
+            tools:text="20 \u2103 \u21E1" />
 
         <TextView
             android:id="@+id/temp_min"
@@ -65,4 +64,5 @@
             android:textSize="12sp"
             tools:text="2 \u2103 \u21E3" />
     </LinearLayout>
+
 </LinearLayout>

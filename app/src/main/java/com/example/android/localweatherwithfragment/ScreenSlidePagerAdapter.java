@@ -1,16 +1,15 @@
 package com.example.android.localweatherwithfragment;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-
 import com.example.android.localweatherwithfragment.DataModel.CurrentModel;
 import com.example.android.localweatherwithfragment.DataModel.DaysBaseModel;
 import com.example.android.localweatherwithfragment.DataModel.Dto;
 import com.example.android.localweatherwithfragment.Fragment.CurrentConditionFragment;
+import com.example.android.localweatherwithfragment.Fragment.DaysFragment;
 
 import java.util.ArrayList;
 import java.util.List;
