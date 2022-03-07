@@ -3,6 +3,8 @@ package com.example.android.localweatherwithfragment;
 import static android.widget.Toast.LENGTH_SHORT;
 import static com.uber.autodispose.AutoDispose.autoDisposable;
 import static com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider.from;
+
+import android.annotation.SuppressLint;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
@@ -14,12 +16,15 @@ import com.example.android.localweatherwithfragment.DataModel.SantizedWeatherDto
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
     TabLayout tabLayout;
     ViewPager2 viewPager;
+    @SuppressLint("AutoDispose")
+    private Disposable subscribe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,23 +39,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("AutoDispose")
     private void loadData() {
-        DtoRepository
-                .getDto(
-                    ParameterClass.PARAM)
-            .filter(rawDto -> rawDto.weatherForecastList()!=null)
-            .map(rawDto -> SantizedWeatherDto.create(rawDto.resolvedAddress(),rawDto.weatherForecastList(),
-                rawDto.current_weather()))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .as(autoDisposable(from(this)))
-                .subscribe(this::onSuccess, this::onError);
+        subscribe = DtoRepository
+            .getDto(
+                ParameterClass.PARAM)
+            .filter(rawDto -> rawDto.weatherForecastList() != null)
+            .map(rawDto -> SantizedWeatherDto
+                .create(rawDto.resolvedAddress(), rawDto.weatherForecastList(),
+                    rawDto.current_weather()))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(this::onSuccess);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ///自动取消网络请求
+        subscribe.dispose();
+        System.out.println("onDestroy");
     }
 
     private void onSuccess(SantizedWeatherDto dto) {

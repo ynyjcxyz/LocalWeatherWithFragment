@@ -9,7 +9,7 @@ public class ParameterClass {
 
   public static final RequestParam PARAM = new RequestParam("Seattle",
       "metric",
-      "days,current", "UDR74JLWCB3CRZBZQSTL3AVQH", "json");
+      "days,current", "UDR74JLWCB3CRZBZQSTL3AVQH", "json","xx");
 
   //This is weather API baseUrl
   public static final String baseUrl = "https://weather.visualcrossing.com/";

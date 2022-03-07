@@ -35,11 +35,8 @@ public class CurrentConditionFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle bundle) {
         View rootView = inflater.inflate(R.layout.fragment_current_condition, container, false);
-
         initView(rootView);
-
         loadData();
-
         return rootView;
     }
 
