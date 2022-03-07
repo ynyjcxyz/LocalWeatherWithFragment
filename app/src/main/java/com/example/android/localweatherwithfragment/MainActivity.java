@@ -17,6 +17,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
+
     TabLayout tabLayout;
     ViewPager2 viewPager;
 
@@ -36,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadData() {
         DtoRepository
                 .getDto(
-                    new RequestParam(ParameterClass.cityName, ParameterClass.unitGroup,
-                        ParameterClass.include, ParameterClass.key, ParameterClass.contentType))
+                    ParameterClass.PARAM)
             .filter(rawDto -> rawDto.weatherForecastList()!=null)
             .map(rawDto -> SantizedWeatherDto.create(rawDto.resolvedAddress(),rawDto.weatherForecastList(),
                 rawDto.current_weather()))
