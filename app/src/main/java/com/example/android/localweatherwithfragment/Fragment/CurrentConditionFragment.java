@@ -1,6 +1,5 @@
 package com.example.android.localweatherwithfragment.Fragment;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +18,14 @@ public class CurrentConditionFragment extends Fragment {
     TextView server_time, current_temperature, current_condition, precipitation, humidity, wind;
     ImageView icon;
     CurrentModel currentWeather;
+
+    public static CurrentConditionFragment constructCurrentFragment(CurrentModel currentWeather){
+        CurrentConditionFragment currentConditionFragment = new CurrentConditionFragment();
+        Bundle bundle1 = new Bundle();
+        bundle1.putParcelable("currentWeather",currentWeather);
+        currentConditionFragment.setArguments(bundle1);
+        return currentConditionFragment;
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,12 +50,10 @@ public class CurrentConditionFragment extends Fragment {
         icon = rootView.findViewById(R.id.icon);
     }
 
-    @SuppressLint("SetTextI18n")
     private void loadData() {
-        assert getArguments() != null;
-        currentWeather = getArguments().getParcelable("currentWeather");
+        currentWeather = requireArguments().getParcelable("currentWeather");
 
-        server_time.setText("Time: " + (currentWeather).datetime());
+        server_time.setText("Time: " + currentWeather.datetime());
         current_temperature.setText(currentWeather.temp() + "\u2103");
         current_condition.setText("Current Condition: " + currentWeather.conditions());
         precipitation.setText(currentWeather.precip() +"%");

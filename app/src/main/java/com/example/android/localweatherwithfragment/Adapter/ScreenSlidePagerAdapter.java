@@ -5,12 +5,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-import com.example.android.localweatherwithfragment.DataModel.CurrentModel;
 import com.example.android.localweatherwithfragment.DataModel.DaysBaseModel;
 import com.example.android.localweatherwithfragment.DataModel.Dto;
 import com.example.android.localweatherwithfragment.Fragment.CurrentConditionFragment;
 import com.example.android.localweatherwithfragment.Fragment.DaysFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,33 +23,15 @@ public class ScreenSlidePagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        Fragment frag_new = null;
-        if (position == 0) frag_new = currentConditionFragment();
-        if (position == 1) frag_new = daysFragment();
-        assert frag_new != null;
-        return frag_new;
+        return position == 0 ? currentConditionFragment() : daysFragment();
     }
 
     private Fragment currentConditionFragment() {
-        CurrentConditionFragment currentConditionFragment = new CurrentConditionFragment();
-        Bundle bundle1 =new Bundle();
-        CurrentModel currentWeather = dto.current_weather();
-        System.out.println(currentWeather);
-        bundle1.putParcelable("currentWeather",currentWeather);
-        currentConditionFragment.setArguments(bundle1);
-        return currentConditionFragment;
-
+        return CurrentConditionFragment.constructCurrentFragment(dto.current_weather());
     }
 
     private Fragment daysFragment() {
-        DaysFragment daysFragment = new DaysFragment();
-        Bundle bundle2 = new Bundle();
-        List<DaysBaseModel> weatherForecastList = dto.weatherForecastList();
-        System.out.println(weatherForecastList);
-        assert weatherForecastList != null;
-        bundle2.putParcelableArrayList("weatherForecastList", new ArrayList<>(weatherForecastList));
-        daysFragment.setArguments(bundle2);
-        return daysFragment;
+        return DaysFragment.constructDaysFragment(dto.weatherForecastList());
     }
 
     @Override

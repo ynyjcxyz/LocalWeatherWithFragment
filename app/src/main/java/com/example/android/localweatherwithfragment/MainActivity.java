@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(this::onSuccess, this::onError);
     }
 
+
     private void onSuccess(Dto dto) {
         bindViewPagerWithData(dto);
         this.setTitle(dto.resolvedAddress());

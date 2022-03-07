@@ -20,6 +20,15 @@ public class DaysFragment extends Fragment {
     private List<DaysBaseModel> weatherForecastList = new ArrayList<>();
     private RecyclerView recyclerView;
     private RecyclerViewAdapter recyclerAdapter;
+
+    public static DaysFragment constructDaysFragment(List<DaysBaseModel> weatherForecastList){
+        DaysFragment daysFragment = new DaysFragment();
+        Bundle bundle2 = new Bundle();
+        bundle2.putParcelableArrayList("weatherForecastList", new ArrayList<>(weatherForecastList));
+        daysFragment.setArguments(bundle2);
+        return daysFragment;
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
@@ -31,7 +40,7 @@ public class DaysFragment extends Fragment {
 
         recyclerView = rootView.findViewById(R.id.recycler_view_list);
         recyclerView.setHasFixedSize(true);
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(requireActivity(), DividerItemDecoration.VERTICAL));//add divider in the recyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerAdapter = new RecyclerViewAdapter(rootView.getContext(),weatherForecastList);
         recyclerView.setAdapter(recyclerAdapter);

@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide;
 import com.example.android.localweatherwithfragment.DataModel.DaysBaseModel;
 import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
 import com.example.android.localweatherwithfragment.R;
-
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder>{
@@ -20,12 +19,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder>{
     public RecyclerViewAdapter(Context context, List<DaysBaseModel> itemList) {
         this.context = context;
         this.itemList = itemList;
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    public void setItemList(List<DaysBaseModel> listAdd){
-        this.itemList = listAdd;
-        notifyDataSetChanged();
     }
 
     @NonNull
