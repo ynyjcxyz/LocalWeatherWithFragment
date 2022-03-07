@@ -9,6 +9,6 @@ public class DtoRepository {
     public static Observable<Dto> getDto(RequestParam param) {
 
         return retrofitService().getData(param.cityName, param.unitGroup, param.include, param.key,
-            param.contentType);
+            param.contentType,param.id);
     }
 }

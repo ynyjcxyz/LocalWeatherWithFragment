@@ -13,5 +13,7 @@ public interface WeatherService {
                             @Query("unitGroup") String unitGroup,//metric
                             @Query("include") String include,//days,current
                             @Query("key") String key,//UDR74JLWCB3CRZBZQSTL3AVQH
-                            @Query("contentType") String contentType);//json
+                            @Query("contentType") String contentType,
+                            @Query("userId") String userId
+        );//json
 }
