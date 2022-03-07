@@ -5,13 +5,10 @@ import com.example.android.localweatherwithfragment.DataModel.Dto;
 import io.reactivex.Observable;
 
 public class DtoRepository {
-    public static Observable<Dto> getDto(String cityName,
-                                         String unitGroup,
-                                         String include,
-                                         String key,
-                                         String contentType) {
+    //p0 use RequestParam
+    public static Observable<Dto> getDto(RequestParam param) {
 
-        RequestParam param = new RequestParam(cityName,unitGroup,include,key,contentType);
-        return retrofitService().getData(param.cityName, param.unitGroup, param.include, param.key,param.contentType);
+        return retrofitService().getData(param.cityName, param.unitGroup, param.include, param.key,
+            param.contentType);
     }
 }
