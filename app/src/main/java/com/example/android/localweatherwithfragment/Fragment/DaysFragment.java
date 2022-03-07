@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.android.localweatherwithfragment.DataModel.DaysBaseModel;
 import com.example.android.localweatherwithfragment.R;
-import com.example.android.localweatherwithfragment.RecyclerViewAdapter;
+import com.example.android.localweatherwithfragment.Adapter.RecyclerViewAdapter;
 import java.util.ArrayList;
 import java.util.List;
 

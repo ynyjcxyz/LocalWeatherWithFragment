@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.example.android.localweatherwithfragment.DataModel.CurrentModel;
-import com.example.android.localweatherwithfragment.ParameterClass;
+import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
 import com.example.android.localweatherwithfragment.R;
 
 public class CurrentConditionFragment extends Fragment {

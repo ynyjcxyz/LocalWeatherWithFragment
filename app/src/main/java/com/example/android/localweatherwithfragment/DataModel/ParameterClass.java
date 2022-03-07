@@ -1,4 +1,4 @@
-package com.example.android.localweatherwithfragment;
+package com.example.android.localweatherwithfragment.DataModel;
 
 public class ParameterClass {
     public static final String[] fragmentTitles = new String[]

@@ -7,7 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import com.example.android.localweatherwithfragment.Adapter.ScreenSlidePagerAdapter;
 import com.example.android.localweatherwithfragment.DataModel.Dto;
+import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import io.reactivex.android.schedulers.AndroidSchedulers;

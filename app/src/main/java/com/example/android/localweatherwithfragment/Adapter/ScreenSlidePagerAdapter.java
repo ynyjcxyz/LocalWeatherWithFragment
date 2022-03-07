@@ -1,4 +1,4 @@
-package com.example.android.localweatherwithfragment;
+package com.example.android.localweatherwithfragment.Adapter;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
