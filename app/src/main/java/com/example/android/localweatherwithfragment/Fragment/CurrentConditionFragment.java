@@ -16,11 +16,21 @@ import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
 import com.example.android.localweatherwithfragment.R;
 
 public class CurrentConditionFragment extends Fragment {
-    TextView server_time, current_temperature, current_condition, precipitation, humidity, wind;
+
+  private static final String KEY_CURRENT_WEATHER = "xxx";
+  TextView server_time, current_temperature, current_condition, precipitation, humidity, wind;
     ImageView icon;
     CurrentModel currentWeather;
 
-    @Override
+  public static CurrentConditionFragment constructFragment(CurrentModel currentWeather1) {
+      CurrentConditionFragment currentConditionFragment = new CurrentConditionFragment();
+      Bundle bundle =new Bundle();
+      bundle.putParcelable(KEY_CURRENT_WEATHER, currentWeather1);
+      currentConditionFragment.setArguments(bundle);
+      return currentConditionFragment;
+  }
+
+  @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle bundle) {
@@ -45,9 +55,7 @@ public class CurrentConditionFragment extends Fragment {
 
     @SuppressLint("SetTextI18n")
     private void loadData() {
-        assert getArguments() != null;
-        currentWeather = getArguments().getParcelable("currentWeather");
-
+        currentWeather = requireArguments().getParcelable("currentWeather1");
         server_time.setText("Time: " + (currentWeather).datetime());
         current_temperature.setText(currentWeather.temp() + "\u2103");
         current_condition.setText("Current Condition: " + currentWeather.conditions());

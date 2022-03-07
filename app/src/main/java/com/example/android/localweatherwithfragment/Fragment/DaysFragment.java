@@ -26,11 +26,13 @@ public class DaysFragment extends Fragment {
                              @Nullable Bundle bundle ) {
         View rootView = inflater.inflate(R.layout.fragment_days_condition, container, false);
 
+        //require
         weatherForecastList = getArguments() != null ? getArguments().getParcelableArrayList("weatherForecastList") : null;
         System.out.println(weatherForecastList);
 
         recyclerView = rootView.findViewById(R.id.recycler_view_list);
         recyclerView.setHasFixedSize(true);
+        //requireActivity
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerAdapter = new RecyclerViewAdapter(rootView.getContext(),weatherForecastList);

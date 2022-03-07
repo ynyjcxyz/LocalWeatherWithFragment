@@ -10,6 +10,8 @@ public class DtoRepository {
                                          String include,
                                          String key,
                                          String contentType) {
-        return retrofitService().getData(cityName, unitGroup, include, key,contentType);
+
+        RequestParam param = new RequestParam(cityName,unitGroup,include,key,contentType);
+        return retrofitService().getData(param.cityName, param.unitGroup, param.include, param.key,param.contentType);
     }
 }

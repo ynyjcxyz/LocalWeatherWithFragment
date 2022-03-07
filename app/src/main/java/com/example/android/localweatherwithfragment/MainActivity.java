@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.android.localweatherwithfragment.Adapter.ScreenSlidePagerAdapter;
 import com.example.android.localweatherwithfragment.DataModel.Dto;
 import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
+import com.example.android.localweatherwithfragment.DataModel.SantizedWeatherDto;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -36,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
     private void loadData() {
         DtoRepository
                 .getDto(ParameterClass.cityName,ParameterClass.unitGroup,ParameterClass.include,ParameterClass.key,ParameterClass.contentType)
+            .filter(rawDto -> rawDto.weatherForecastList()!=null)
+            .map(rawDto -> SantizedWeatherDto.create(rawDto.resolvedAddress(),rawDto.weatherForecastList(),
+                rawDto.current_weather()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .as(autoDisposable(from(this)))
@@ -48,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
         ///自动取消网络请求
     }
 
-    private void onSuccess(Dto dto) {
+    private void onSuccess(SantizedWeatherDto dto) {
         bindViewPagerWithData(dto);
         this.setTitle(dto.resolvedAddress());
     }
 
-    private void bindViewPagerWithData(Dto dto) {
+    private void bindViewPagerWithData(SantizedWeatherDto dto) {
         viewPager.setAdapter(new ScreenSlidePagerAdapter(this,dto));
         viewPager.setCurrentItem(0);
         bindTab();

@@ -9,19 +9,22 @@ import java.util.List;
 
 @GenerateTypeAdapter
 @AutoValue
-public abstract class Dto implements Parcelable {
+public abstract class SantizedWeatherDto implements Parcelable {
 
-    //p0 : Remove nullable
-    @Nullable
     @SerializedName("resolvedAddress")
     public abstract String resolvedAddress();
 
-    @Nullable
     @SerializedName("days")
     public abstract List<DaysBaseModel> weatherForecastList();
 
-    @Nullable
     @SerializedName("currentConditions")
     public abstract CurrentModel current_weather();
+
+    public static SantizedWeatherDto create(String resolvedAddress,
+        List<DaysBaseModel> weatherForecastList, CurrentModel current_weather) {
+        return new AutoValue_SantizedWeatherDto(resolvedAddress, weatherForecastList,
+            current_weather);
+    }
+
 
 }
