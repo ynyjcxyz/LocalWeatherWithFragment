@@ -1,9 +1,7 @@
 package com.example.android.localweatherwithfragment;
 
 import static com.example.android.localweatherwithfragment.GetRetrofitObj.retrofitService;
-
 import com.example.android.localweatherwithfragment.DataModel.RawDto;
-
 import io.reactivex.Observable;
 
 public class DtoRepository {

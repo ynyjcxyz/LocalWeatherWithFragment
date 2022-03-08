@@ -12,6 +12,8 @@ import com.example.android.localweatherwithfragment.DataModel.Dto;
 import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import java.util.concurrent.TimeUnit;
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -32,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        DtoRepository
-                .getDto(ParameterClass.PARAM)
+        Observable.interval(0,5, TimeUnit.SECONDS)
+                .flatMap(aLong -> DtoRepository.getDto(ParameterClass.PARAM))
                 .filter(rawDto -> rawDto.weatherForecastList() != null)
                 .map(rawDto -> Dto
                         .create(rawDto.resolvedAddress(),
@@ -44,6 +46,20 @@ public class MainActivity extends AppCompatActivity {
                 .as(autoDisposable(from(this)))
                 //automatically unsubscribe from Observable obj
                 .subscribe(this::onSuccess, this::onError);
+
+/*        DtoRepository
+                .getDto(ParameterClass.PARAM)
+                .filter(rawDto -> rawDto.weatherForecastList() != null)
+                .map(rawDto -> Dto
+                        .create(rawDto.resolvedAddress(),
+                                rawDto.weatherForecastList(),
+                                rawDto.current_weather()))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .as(autoDisposable(from(this)))
+                //automatically unsubscribe from Observable obj
+                .subscribe(this::onSuccess, this::onError);*/
+
     }
 
     private void onSuccess(Dto dto) {
