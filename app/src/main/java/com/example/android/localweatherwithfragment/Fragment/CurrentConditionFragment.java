@@ -1,5 +1,6 @@
 package com.example.android.localweatherwithfragment.Fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,7 @@ public class CurrentConditionFragment extends Fragment {
         icon = rootView.findViewById(R.id.icon);
     }
 
+    @SuppressLint("SetTextI18n")
     private void loadData() {
         currentWeather = requireArguments().getParcelable("currentWeather");
 

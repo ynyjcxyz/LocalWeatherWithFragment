@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import com.example.android.localweatherwithfragment.Adapter.ScreenSlidePagerAdapter;
 import com.example.android.localweatherwithfragment.DataModel.Dto;
 import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
@@ -34,13 +33,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadData() {
         DtoRepository
-                .getDto(ParameterClass.cityName,ParameterClass.unitGroup,ParameterClass.include,ParameterClass.key,ParameterClass.contentType)
+                .getDto(ParameterClass.PARAM)
+                .filter(rawDto -> rawDto.weatherForecastList() != null)
+                .map(rawDto -> Dto
+                        .create(rawDto.resolvedAddress(),
+                                rawDto.weatherForecastList(),
+                                rawDto.current_weather()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .as(autoDisposable(from(this)))
+                //automatically unsubscribe from Observable obj
                 .subscribe(this::onSuccess, this::onError);
     }
-
 
     private void onSuccess(Dto dto) {
         bindViewPagerWithData(dto);

@@ -1,15 +1,18 @@
 package com.example.android.localweatherwithfragment.DataModel;
 
+import com.example.android.localweatherwithfragment.RequestParam;
+
 public class ParameterClass {
     public static final String[] fragmentTitles = new String[]
             {"CurrentWeather", "Days"};
 
     //These are weather API url parameters
-    public static final String cityName = "Seattle";
-    public static final String unitGroup = "metric";
-    public static final String include = "days,current";
-    public static final String key = "UDR74JLWCB3CRZBZQSTL3AVQH";
-    public static final String contentType = "json";
+    public static final RequestParam PARAM =
+            new RequestParam("Seattle",
+                    "metric",
+                    "days,current",
+                    "UDR74JLWCB3CRZBZQSTL3AVQH",
+                    "json");
 
     //This is weather API baseUrl
     public static final String baseUrl = "https://weather.visualcrossing.com/";
