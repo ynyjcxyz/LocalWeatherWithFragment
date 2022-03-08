@@ -34,8 +34,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        Observable.interval(0,5, TimeUnit.SECONDS)
-                .flatMap(aLong -> DtoRepository.getDto(ParameterClass.PARAM))
+        Observable
+                .interval(0,300, TimeUnit.SECONDS)
+                .switchMap(aLong -> DtoRepository.getDto(ParameterClass.PARAM))
                 .filter(rawDto -> rawDto.weatherForecastList() != null)
                 .map(rawDto -> Dto
                         .create(rawDto.resolvedAddress(),
@@ -47,7 +48,16 @@ public class MainActivity extends AppCompatActivity {
                 //automatically unsubscribe from Observable obj
                 .subscribe(this::onSuccess, this::onError);
 
-/*        DtoRepository
+        /**
+         * map() ： 一般用于对原始的参数进行加工处理，返回值还是基本的类型，可以在subscribe中使用(适用)的类型。
+         * flatMap() ： 并行无序,一般用于输出一个Observable
+         * concatMap() ： concatMap()和flatMap()很像，但串行有序
+         * switchMap() ： switchMap()和flatMap()很像，除了一点:当源Observable发射一个新的数据项时，
+         *               如果旧数据项订阅还未完成，就取消旧订阅数据和停止监视那个数据项产生的Observable,
+         *               开始监视新的数据项；
+        * */
+
+/**        DtoRepository
                 .getDto(ParameterClass.PARAM)
                 .filter(rawDto -> rawDto.weatherForecastList() != null)
                 .map(rawDto -> Dto
