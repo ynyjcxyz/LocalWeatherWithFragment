@@ -1,68 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list_item"
+    android:id="@+id/ll_top_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/datetime_by_days"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="12sp"
-            tools:ignore="NestedWeights"
-            tools:text="2022-03-04" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/conditions_by_days"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            <TextView
+                android:id="@+id/datetime_by_days"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="12sp"
+                tools:ignore="NestedWeights"
+                tools:text="2022-03-04" />
+
+            <TextView
+                android:id="@+id/conditions_by_days"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="12sp"
+                tools:text="Rain, Partially cloudy" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/icon_by_days"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="12sp"
-            tools:text="Rain, Partially cloudy" />
+            android:gravity="center_horizontal" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/temp_max"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="12sp"
+                tools:ignore="NestedWeights"
+                tools:text="20 \u2103 \u21E1" />
+
+            <TextView
+                android:id="@+id/temp_min"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="12sp"
+                tools:text="2 \u2103 \u21E3" />
+        </LinearLayout>
+
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/icon_by_days"
-        android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_weight="1"
-        android:gravity="center_horizontal" />
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:id="@+id/layoutExpand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f7f7f7"
+        android:orientation="vertical"
+        android:visibility="gone">
 
-        <TextView
-            android:id="@+id/temp_max"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/hourly_list"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="12sp"
-            tools:ignore="NestedWeights"
-            tools:text="20 \u2103 \u21E1" />
+            android:layout_height="80dp"
+            android:layout_margin="8dp" />
 
-        <TextView
-            android:id="@+id/temp_min"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="12sp"
-            tools:text="2 \u2103 \u21E3" />
     </LinearLayout>
-
 </LinearLayout>

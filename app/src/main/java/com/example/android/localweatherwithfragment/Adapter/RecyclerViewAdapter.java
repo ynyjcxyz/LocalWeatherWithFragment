@@ -1,52 +1,41 @@
 package com.example.android.localweatherwithfragment.Adapter;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.bumptech.glide.Glide;
-import com.example.android.localweatherwithfragment.DataModel.DaysBaseModel;
-import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
+
+import com.example.android.localweatherwithfragment.DataModel.DaysBaseModelWrapper;
 import com.example.android.localweatherwithfragment.R;
+
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder>{
-    private final Context context;
-    private final List<DaysBaseModel> itemList;
+public class RecyclerViewAdapter extends RecyclerView.Adapter<DayViewHolder> {
+    private final List<DaysBaseModelWrapper> itemList;
 
-    public RecyclerViewAdapter(Context context, List<DaysBaseModel> itemList) {
-        this.context = context;
+    public RecyclerViewAdapter(List<DaysBaseModelWrapper> itemList) {
         this.itemList = itemList;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder
+    public DayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new DayViewHolder
                 (LayoutInflater
-                .from(parent.getContext())
-                .inflate(R.layout.list_item_for_days, parent, false));
+                        .from(parent.getContext())
+                        .inflate(R.layout.list_item_for_days, parent, false));
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.datetime_by_days.setText(itemList.get(position).datetime());
-        holder.conditions_by_days.setText(itemList.get(position).conditions());
-        Glide.with(context)
-                .load(ParameterClass.iconBaseUrl + ParameterClass.second_set_color + itemList.get(position).icon() + ".png")
-                .into(holder.icon_by_days);
-        holder.temp_max.setText(itemList.get(position).tempmax()+"\u2103 \u21E1");
-        holder.temp_min.setText(itemList.get(position).tempmin()+"\u2103 \u21E3");
+    public void onBindViewHolder(@NonNull DayViewHolder holder, int position) {
+        holder.bindData(itemList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        if (itemList != null) {
-            return itemList.size();
-        }
-        return 0;
+        return itemList.size();
     }
 }
