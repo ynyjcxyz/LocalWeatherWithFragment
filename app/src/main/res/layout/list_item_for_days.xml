@@ -81,10 +81,10 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <TextView
-            android:id="@+id/expendable_textView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/hourly_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_margin="8dp" />
 
     </LinearLayout>
