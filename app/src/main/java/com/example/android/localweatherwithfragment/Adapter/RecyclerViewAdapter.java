@@ -1,24 +1,21 @@
 package com.example.android.localweatherwithfragment.Adapter;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.android.localweatherwithfragment.DataModel.DaysBaseModel;
+import com.example.android.localweatherwithfragment.DataModel.DaysBaseModelWrapper;
 import com.example.android.localweatherwithfragment.R;
 
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<DayViewHolder> {
-    private final Context context;
-    private final List<DaysBaseModel> itemList;
+    private final List<DaysBaseModelWrapper> itemList;
 
-    public RecyclerViewAdapter(Context context, List<DaysBaseModel> itemList) {
-        this.context = context;
+    public RecyclerViewAdapter(List<DaysBaseModelWrapper> itemList) {
         this.itemList = itemList;
     }
 
@@ -39,9 +36,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<DayViewHolder> {
 
     @Override
     public int getItemCount() {
-        if (itemList != null) {
-            return itemList.size();
-        }
-        return 0;
+        return itemList.size();
     }
 }

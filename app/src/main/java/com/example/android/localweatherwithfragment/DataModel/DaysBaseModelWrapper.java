@@ -2,8 +2,15 @@ package com.example.android.localweatherwithfragment.DataModel;
 
 public class DaysBaseModelWrapper {
 
-    public final DaysBaseModel daysBaseModel;
-    public boolean expanded;
+    private final DaysBaseModel daysBaseModel;
+    private boolean expanded;
+
+
+    public DaysBaseModelWrapper(DaysBaseModel daysBaseModel, boolean expanded) {
+        this.daysBaseModel = daysBaseModel;
+        this.expanded = expanded;
+    }
+
 
     public DaysBaseModel getDaysBaseModel() {
         return daysBaseModel;
@@ -14,13 +21,6 @@ public class DaysBaseModelWrapper {
     }
 
     public void setExpanded(boolean expanded) {
-        this.expanded = expanded;
-    }
-
-    public DaysBaseModelWrapper(DaysBaseModel daysBaseModel, boolean expanded) {
-
-
-        this.daysBaseModel = daysBaseModel;
         this.expanded = expanded;
     }
 }

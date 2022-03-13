@@ -33,7 +33,8 @@ public class DayViewHolder extends RecyclerView.ViewHolder {
     }
 
     @SuppressLint("SetTextI18n")
-    public void bindData(DaysBaseModel daysBaseModel) {
+    public void bindData(DaysBaseModelWrapper wrapper) {
+        DaysBaseModel daysBaseModel = wrapper.getDaysBaseModel();
         datetime_by_days.setText(daysBaseModel.datetime());
         conditions_by_days.setText(daysBaseModel.conditions());
         Glide.with(itemView.getContext())
