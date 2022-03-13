@@ -1,5 +1,6 @@
 package com.example.android.localweatherwithfragment.Adapter;
 
+import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -8,16 +9,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.android.localweatherwithfragment.DataModel.DaysBaseModel;
 import com.example.android.localweatherwithfragment.DataModel.DaysBaseModelWrapper;
+import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
 import com.example.android.localweatherwithfragment.R;
 
-public class ViewHolder extends RecyclerView.ViewHolder {
+public class DayViewHolder extends RecyclerView.ViewHolder {
     private final View layoutExpand;
     LinearLayout parent_layout;
     TextView datetime_by_days, conditions_by_days, temp_max, temp_min;
     ImageView icon_by_days;
 
-    public ViewHolder(@NonNull View itemView) {
+    public DayViewHolder(@NonNull View itemView) {
         super(itemView);
         parent_layout = itemView.findViewById(R.id.list_item);
         datetime_by_days = itemView.findViewById(R.id.datetime_by_days);
@@ -28,8 +32,20 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         layoutExpand = itemView.findViewById(R.id.layoutExpand);
     }
 
+    @SuppressLint("SetTextI18n")
+    public void bindData(DaysBaseModel daysBaseModel) {
+        datetime_by_days.setText(daysBaseModel.datetime());
+        conditions_by_days.setText(daysBaseModel.conditions());
+        Glide.with(itemView.getContext())
+                .load(ParameterClass.iconBaseUrl + ParameterClass.second_set_color + daysBaseModel.icon() + ".png")
+                .into(icon_by_days);
+        temp_max.setText(daysBaseModel.tempmax() + "\u2103 \u21E1");
+        temp_min.setText(daysBaseModel.tempmin() + "\u2103 \u21E3");
+        bindExpandAction(new DaysBaseModelWrapper(daysBaseModel, false));
+    }
 
-    private void bindExpandAction(DaysBaseModelWrapper wrapper) {
+
+    public void bindExpandAction(DaysBaseModelWrapper wrapper) {
         itemView.setOnClickListener(view -> onItemToggled(wrapper, view));
     }
 
