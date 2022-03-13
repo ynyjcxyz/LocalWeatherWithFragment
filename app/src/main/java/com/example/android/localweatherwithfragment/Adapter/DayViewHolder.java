@@ -17,7 +17,6 @@ import com.example.android.localweatherwithfragment.DataModel.HourlyModel;
 import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
 import com.example.android.localweatherwithfragment.R;
 
-import java.util.Collections;
 import java.util.List;
 
 public class DayViewHolder extends RecyclerView.ViewHolder {
@@ -60,7 +59,7 @@ public class DayViewHolder extends RecyclerView.ViewHolder {
     }
 
     private List<HourlyModel> hourly(DaysBaseModelWrapper wrapper) {
-        return Collections.singletonList(new HourlyModel("123", "321"));
+        return  wrapper.getDaysBaseModel().hours();
     }
 
     private void onItemToggled(DaysBaseModelWrapper personModel, View view) {
