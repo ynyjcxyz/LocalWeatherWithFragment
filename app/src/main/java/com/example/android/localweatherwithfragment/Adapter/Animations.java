@@ -7,13 +7,13 @@ import android.view.animation.Transformation;
 
 public class Animations {
 
-    public static void switchBackgroundColor(View view, boolean isExpanded) {
+/*    public static void switchBackgroundColor(View view, boolean isExpanded) {
         if (isExpanded) {
-            view.setBackgroundColor(0x0000FF00);
-        } else {
             view.setBackgroundColor(0xffffffff);
+        } else {
+            view.setBackgroundColor(0x0000FF00);
         }
-    }
+    }*/
 
     public static void expand(View view) {
         Animation animation = expandAction(view);

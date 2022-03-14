@@ -1,8 +1,8 @@
 package com.example.android.localweatherwithfragment.DataModel;
 
 public class DaysBaseModelWrapper {
-    public final DaysBaseModel daysBaseModel;
-    public boolean expanded;
+    private final DaysBaseModel daysBaseModel;
+    private boolean expanded;
 
     public DaysBaseModelWrapper(DaysBaseModel daysBaseModel, boolean expanded) {
         this.daysBaseModel = daysBaseModel;

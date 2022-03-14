@@ -13,15 +13,15 @@ import com.example.android.localweatherwithfragment.DataModel.DaysBaseModelWrapp
 import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
 import com.example.android.localweatherwithfragment.R;
 
-public class DaysListViewHolder extends RecyclerView.ViewHolder {
+public class DaysViewHolder extends RecyclerView.ViewHolder {
     LinearLayout parent_layout, expandLayout;
     TextView datetime_by_days, conditions_by_days, temp_max, temp_min, expendable_textView_test;
     ImageView icon_by_days;
 
-    public DaysListViewHolder(@NonNull View itemView) {
+    public DaysViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        parent_layout = itemView.findViewById(R.id.list_item);
+        parent_layout = itemView.findViewById(R.id.list_item_un_expand);
         datetime_by_days = itemView.findViewById(R.id.datetime_by_days);
         conditions_by_days = itemView.findViewById(R.id.conditions_by_days);
         temp_max = itemView.findViewById(R.id.temp_max);
@@ -32,7 +32,8 @@ public class DaysListViewHolder extends RecyclerView.ViewHolder {
     }
 
     @SuppressLint("SetTextI18n")
-    public void bindData(DaysBaseModel daysBaseModel) {
+    public void bindData(DaysBaseModelWrapper wrapper) {
+        DaysBaseModel daysBaseModel = wrapper.getDaysBaseModel();
         datetime_by_days.setText(daysBaseModel.datetime());
         conditions_by_days.setText(daysBaseModel.conditions());
         Glide.with(itemView.getContext())
@@ -40,15 +41,21 @@ public class DaysListViewHolder extends RecyclerView.ViewHolder {
                 .into(icon_by_days);
         temp_max.setText(daysBaseModel.tempmax() + "\u2103 \u21E1");
         temp_min.setText(daysBaseModel.tempmin() + "\u2103 \u21E3");
+
+        expendable_textView_test.setText(wrapper.getDaysBaseModel().humidity_daily()+"%");
+
+        bindExpandAction(new DaysBaseModelWrapper(daysBaseModel,false));
     }
 
-    private void bindExpandAction(DaysBaseModelWrapper wrapper) {
+    public void bindExpandAction(DaysBaseModelWrapper wrapper) {
+        //If we use itemView instead of parent_layout, then thw whole view can be touched,
+        // and the expandLayout will include into touch area
         parent_layout.setOnClickListener(view -> onItemToggled(wrapper, view));
     }
 
     private void onItemToggled(DaysBaseModelWrapper daysWrapperModel, View view) {
         boolean isExpanded = !daysWrapperModel.isExpanded();
-        Animations.switchBackgroundColor(view, isExpanded);
+//        Animations.switchBackgroundColor(view, isExpanded);
         if (isExpanded) {
             Animations.expand(expandLayout);
         } else {
