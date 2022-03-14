@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.android.localweatherwithfragment.R;
 
 public class ViewHolder extends RecyclerView.ViewHolder{
-    LinearLayout parent_layout;
-    TextView datetime_by_days,conditions_by_days,temp_max,temp_min;
+    LinearLayout parent_layout,expandLayout;
+    TextView datetime_by_days,conditions_by_days,temp_max,temp_min,expendable_textView_test;
     ImageView icon_by_days;
 
     public ViewHolder(@NonNull View itemView) {
@@ -22,5 +22,7 @@ public class ViewHolder extends RecyclerView.ViewHolder{
         temp_max = itemView.findViewById(R.id.temp_max);
         temp_min = itemView.findViewById(R.id.temp_min);
         icon_by_days = itemView.findViewById(R.id.icon_by_days);
+        expendable_textView_test = itemView.findViewById(R.id.expendable_textView_test);
+        expandLayout = itemView.findViewById(R.id.layoutExpand);
     }
 }

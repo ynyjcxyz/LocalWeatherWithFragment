@@ -5,6 +5,8 @@ import com.google.auto.value.AutoValue;
 import com.google.gson.annotations.SerializedName;
 import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 
+import java.util.List;
+
 @GenerateTypeAdapter
 @AutoValue
 public abstract class DaysBaseModel implements Parcelable {
@@ -24,4 +26,19 @@ public abstract class DaysBaseModel implements Parcelable {
     @SerializedName("icon")
     public abstract String icon();
 
+    @SerializedName("windspeed")
+    public abstract double windspeed_daily();
+
+    @SerializedName("humidity")
+    public abstract double humidity_daily();
+
+    @SerializedName("sunrise")
+    public abstract String sunrise();
+
+    @SerializedName("sunset")
+    public abstract String sunset();
+
+    public abstract boolean expandAble();
+
+    public abstract boolean unExpandAble();
 }

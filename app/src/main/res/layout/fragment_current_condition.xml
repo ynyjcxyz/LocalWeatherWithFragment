@@ -24,8 +24,8 @@
         <TextView
             android:id="@+id/current_temperature"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="72dp"
+            android:layout_weight="1"
             android:gravity="center"
             android:textSize="48sp"
             tools:text="20 \u2103" />
