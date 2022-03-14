@@ -37,8 +37,4 @@ public abstract class DaysBaseModel implements Parcelable {
 
     @SerializedName("sunset")
     public abstract String sunset();
-
-    public abstract boolean expandAble();
-
-    public abstract boolean unExpandAble();
 }

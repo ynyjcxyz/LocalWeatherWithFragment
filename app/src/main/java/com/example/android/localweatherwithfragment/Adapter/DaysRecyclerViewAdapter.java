@@ -3,9 +3,7 @@ package com.example.android.localweatherwithfragment.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,19 +13,19 @@ import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
 import com.example.android.localweatherwithfragment.R;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder>{
+public class DaysRecyclerViewAdapter extends RecyclerView.Adapter<DaysListViewHolder>{
     private final Context context;
     private final List<DaysBaseModel> itemList;
 
-    public RecyclerViewAdapter(Context context, List<DaysBaseModel> itemList) {
+    public DaysRecyclerViewAdapter(Context context, List<DaysBaseModel> itemList) {
         this.context = context;
         this.itemList = itemList;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder
+    public DaysListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new DaysListViewHolder
                 (LayoutInflater
                 .from(parent.getContext())
                 .inflate(R.layout.list_item_for_days, parent, false));
@@ -35,7 +33,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder>{
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DaysListViewHolder holder, int position) {
+        bind(holder, position);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void bind(@NonNull DaysListViewHolder holder, int position) {
         holder.datetime_by_days.setText(itemList.get(position).datetime());
         holder.conditions_by_days.setText(itemList.get(position).conditions());
         Glide.with(context)

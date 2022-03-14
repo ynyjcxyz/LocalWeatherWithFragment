@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.android.localweatherwithfragment.DataModel.DaysBaseModel;
 import com.example.android.localweatherwithfragment.R;
-import com.example.android.localweatherwithfragment.Adapter.RecyclerViewAdapter;
+import com.example.android.localweatherwithfragment.Adapter.DaysRecyclerViewAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DaysFragment extends Fragment {
     private List<DaysBaseModel> weatherForecastList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private RecyclerViewAdapter recyclerAdapter;
+    private DaysRecyclerViewAdapter recyclerAdapter;
 
     public static DaysFragment constructDaysFragment(List<DaysBaseModel> weatherForecastList){
         DaysFragment daysFragment = new DaysFragment();
@@ -41,7 +41,7 @@ public class DaysFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(requireActivity(), DividerItemDecoration.VERTICAL));//add divider in the recyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        recyclerAdapter = new RecyclerViewAdapter(rootView.getContext(),weatherForecastList);
+        recyclerAdapter = new DaysRecyclerViewAdapter(rootView.getContext(),weatherForecastList);
         recyclerView.setAdapter(recyclerAdapter);
 
         return rootView;

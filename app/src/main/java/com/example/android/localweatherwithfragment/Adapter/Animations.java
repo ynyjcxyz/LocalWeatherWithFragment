@@ -6,6 +6,7 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
 public class Animations {
+
     public static void switchBackgroundColor(View view, boolean isExpanded) {
         if (isExpanded) {
             view.setBackgroundColor(0x0000FF00);

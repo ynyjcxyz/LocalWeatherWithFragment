@@ -1,11 +1,11 @@
-package com.example.android.localweatherwithfragment;
+package com.example.android.localweatherwithfragment.Adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
-public class Animations {
+public class ExpandableAnimations {
     public static void switchBackgroundColor(View view, boolean isExpanded) {
         if (isExpanded) {
             view.setBackgroundColor(0x0000FF00);
