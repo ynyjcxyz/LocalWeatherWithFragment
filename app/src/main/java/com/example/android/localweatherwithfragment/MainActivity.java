@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 import com.example.android.localweatherwithfragment.Adapter.ScreenSlidePagerAdapter;
 import com.example.android.localweatherwithfragment.DataModel.Dto;
-import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
+import com.example.android.localweatherwithfragment.Util.AppConstants;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import java.util.concurrent.TimeUnit;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadData() {
         Observable
                 .interval(0,300, TimeUnit.SECONDS)
-                .switchMap(aLong -> DtoRepository.getDto(ParameterClass.PARAM))
+                .switchMap(aLong -> DtoRepository.getDto(AppConstants.PARAM))
                 .filter(rawDto -> rawDto.weatherForecastList() != null)
                 .map(rawDto -> Dto
                         .create(rawDto.resolvedAddress(),
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         * */
 
 /**        DtoRepository
-                .getDto(ParameterClass.PARAM)
+                .getDto(AppConstants.PARAM)
                 .filter(rawDto -> rawDto.weatherForecastList() != null)
                 .map(rawDto -> Dto
                         .create(rawDto.resolvedAddress(),
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void bindTab() {
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) ->
-                tab.setText(ParameterClass.fragmentTitles[position])).attach();
+                tab.setText(AppConstants.fragmentTitles[position])).attach();
     }
 
     private void onError(Throwable throwable) {

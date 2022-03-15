@@ -10,7 +10,7 @@ public class DtoRepository {
                 .getData(
                         params.cityName,
                         params.unitGroup,
-                        params.include,
+
                         params.key,
                         params.contentType);
     }

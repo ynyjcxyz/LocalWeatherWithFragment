@@ -1,8 +1,8 @@
-package com.example.android.localweatherwithfragment.DataModel;
+package com.example.android.localweatherwithfragment.Util;
 
 import com.example.android.localweatherwithfragment.RequestParam;
 
-public class ParameterClass {
+public class AppConstants {
     public static final String[] fragmentTitles = new String[]
             {"CurrentWeather", "Days"};
 

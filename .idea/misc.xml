@@ -9,6 +9,7 @@
         <entry key="..\:/Android_Interface/LocalWeatherWithFragment/app/src/main/res/layout/fragment_current_condition.xml" value="0.25" />
         <entry key="..\:/Android_Interface/LocalWeatherWithFragment/app/src/main/res/layout/fragment_days_condition.xml" value="0.18110435663627153" />
         <entry key="..\:/Android_Interface/LocalWeatherWithFragment/app/src/main/res/layout/item_hour.xml" value="0.33" />
+        <entry key="..\:/Android_Interface/LocalWeatherWithFragment/app/src/main/res/layout/item_hourly.xml" value="0.5755208333333334" />
         <entry key="..\:/Android_Interface/LocalWeatherWithFragment/app/src/main/res/layout/list_item_for_days.xml" value="0.22" />
       </map>
     </option>

@@ -37,4 +37,7 @@ public abstract class DaysBaseModel implements Parcelable {
 
     @SerializedName("sunset")
     public abstract String sunset();
+
+    @SerializedName("hours")
+    public abstract List<HourlyModel> hourlyList();
 }

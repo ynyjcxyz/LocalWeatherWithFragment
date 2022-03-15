@@ -9,13 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.example.android.localweatherwithfragment.Util.AppConstants;
 import com.example.android.localweatherwithfragment.DataModel.DaysBaseModel;
 import com.example.android.localweatherwithfragment.DataModel.DaysBaseModelWrapper;
 import com.example.android.localweatherwithfragment.DataModel.HourlyModel;
-import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
 import com.example.android.localweatherwithfragment.R;
-
-import java.util.Collections;
 import java.util.List;
 
 public class DaysViewHolder extends RecyclerView.ViewHolder {
@@ -43,8 +41,8 @@ public class DaysViewHolder extends RecyclerView.ViewHolder {
         datetime_by_days.setText(daysBaseModel.datetime());
         conditions_by_days.setText(daysBaseModel.conditions());
         Glide.with(itemView.getContext())
-                .load(ParameterClass.iconBaseUrl
-                        + ParameterClass.second_set_color
+                .load(AppConstants.iconBaseUrl
+                        + AppConstants.second_set_color
                         + daysBaseModel.icon() + ".png")
                 .into(icon_by_days);
         temp_max.setText(daysBaseModel.tempmax() + "\u2103 \u21E1");
@@ -54,7 +52,7 @@ public class DaysViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindExpandAction(DaysBaseModelWrapper wrapper) {
-        //If we use itemView instead of parent_layout, then thw whole view can be touched,
+        //If we use itemView instead of parent_layout, then the whole view can be touched,
         // and the expandLayout will include into touch area
         parent_layout.setOnClickListener(view -> onItemToggled(wrapper));
 
@@ -64,7 +62,7 @@ public class DaysViewHolder extends RecyclerView.ViewHolder {
     }
 
     private List<HourlyModel> hourly(DaysBaseModelWrapper wrapper) {
-        return Collections.singletonList(new HourlyModel("123", "321"));
+        return wrapper.getDaysBaseModel().hourlyList();
     }
 
     private void onItemToggled(DaysBaseModelWrapper daysWrapperModel) {

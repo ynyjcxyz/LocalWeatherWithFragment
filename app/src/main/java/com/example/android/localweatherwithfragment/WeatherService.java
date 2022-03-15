@@ -11,7 +11,7 @@ public interface WeatherService {
     @GET("VisualCrossingWebServices/rest/services/timeline/{cityName}")
     Observable<RawDto> getData(@Path("cityName") String cityName,//Seattle
                                @Query("unitGroup") String unitGroup,//metric
-                               @Query("include") String include,//days,current
+
                                @Query("key") String key,//UDR74JLWCB3CRZBZQSTL3AVQH
                                @Query("contentType") String contentType);//json
 }

@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
+import com.example.android.localweatherwithfragment.Util.AppConstants;
 import com.example.android.localweatherwithfragment.DataModel.CurrentModel;
-import com.example.android.localweatherwithfragment.DataModel.ParameterClass;
 import com.example.android.localweatherwithfragment.R;
 
 public class CurrentConditionFragment extends Fragment {
@@ -62,7 +62,7 @@ public class CurrentConditionFragment extends Fragment {
         humidity.setText(currentWeather.humidity() +"%");
         wind.setText(currentWeather.windspeed() +" km/h");
         Glide.with(CurrentConditionFragment.this)
-                .load(ParameterClass.iconBaseUrl + ParameterClass.fourth_set_color + currentWeather.icon() + ".png")
+                .load(AppConstants.iconBaseUrl + AppConstants.fourth_set_color + currentWeather.icon() + ".png")
                 .into(icon);
     }
 }
