@@ -11,32 +11,35 @@ import java.util.List;
 @AutoValue
 public abstract class DaysBaseModel implements Parcelable {
 
-    @SerializedName("datetime")
+    @SerializedName("datetime")//
     public abstract String datetime();
 
-    @SerializedName("tempmax")
+    @SerializedName("tempmax")//
     public abstract double tempmax();
 
-    @SerializedName("tempmin")
+    @SerializedName("tempmin")//
     public abstract double tempmin();
 
-    @SerializedName("conditions")
+    @SerializedName("conditions")//
     public abstract String conditions();
 
-    @SerializedName("icon")
+    @SerializedName("icon")//
     public abstract String icon();
 
-    @SerializedName("windspeed")
+    @SerializedName("windspeed")//
     public abstract double windspeed_daily();
 
-    @SerializedName("humidity")
+    @SerializedName("humidity")//
     public abstract double humidity_daily();
 
-    @SerializedName("sunrise")
-    public abstract String sunrise();
+    @SerializedName("precipprob")//
+    public abstract double precipprob_daily();
 
-    @SerializedName("sunset")
-    public abstract String sunset();
+    @SerializedName("sunrise")//
+    public abstract String sunrise_daily();
+
+    @SerializedName("sunset")//
+    public abstract String sunset_daily();
 
     @SerializedName("hours")
     public abstract List<HourlyModel> hourlyList();

@@ -18,7 +18,8 @@ import java.util.List;
 
 public class DaysViewHolder extends RecyclerView.ViewHolder {
     LinearLayout parent_layout, expandLayout;
-    TextView datetime_by_days, conditions_by_days, temp_max, temp_min;
+    TextView datetime_by_days, conditions_by_days, temp_max, temp_min,
+            windspeed_daily,humidity_daily,precipprob_daily,sunrise_sunset;
     ImageView icon_by_days;
     RecyclerView hourly_list;
 
@@ -33,6 +34,11 @@ public class DaysViewHolder extends RecyclerView.ViewHolder {
         icon_by_days = itemView.findViewById(R.id.icon_by_days);
         expandLayout = itemView.findViewById(R.id.layoutExpand);
         hourly_list = itemView.findViewById(R.id.hourly_list);
+
+        windspeed_daily = itemView.findViewById(R.id.windspeed_daily);
+        humidity_daily = itemView.findViewById(R.id.humidity_daily);
+        precipprob_daily = itemView.findViewById(R.id.precipprob_daily);
+        sunrise_sunset = itemView.findViewById(R.id.sunrise_sunset);
     }
 
     @SuppressLint("SetTextI18n")
@@ -48,6 +54,10 @@ public class DaysViewHolder extends RecyclerView.ViewHolder {
         temp_max.setText(daysBaseModel.tempmax() + "\u2103 \u21E1");
         temp_min.setText(daysBaseModel.tempmin() + "\u2103 \u21E3");
 
+        windspeed_daily.setText(daysBaseModel.windspeed_daily() + "km/h");
+        humidity_daily.setText(daysBaseModel.humidity_daily() + "%");
+        precipprob_daily.setText(daysBaseModel.precipprob_daily() + "%");
+        sunrise_sunset.setText(daysBaseModel.sunrise_daily() + "," + daysBaseModel.sunset_daily());
         bindExpandAction(new DaysBaseModelWrapper(daysBaseModel,false));
     }
 
@@ -70,8 +80,10 @@ public class DaysViewHolder extends RecyclerView.ViewHolder {
 //        Animations.switchBackgroundColor(view, isExpanded);
         if (isExpanded) {
             Animations.expand(expandLayout);
+            Animations.setTextBold(datetime_by_days);
         } else {
             Animations.collapse(expandLayout);
+            Animations.setTextNormal(datetime_by_days);
         }
         daysWrapperModel.setExpanded(isExpanded);
     }

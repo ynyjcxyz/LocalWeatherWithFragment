@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">LocalWeatherWithFragment</string>
+    <string name="wind_speed">Wind Speed</string>
+    <string name="humidity">Humidity</string>
+    <string name="rainfall_probability">Rainfall probability</string>
+    <string name="sunrise_sunset">Sunrise/sunset</string>
 </resources>

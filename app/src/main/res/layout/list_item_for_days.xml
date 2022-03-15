@@ -8,9 +8,9 @@
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/list_item_un_expand"
-        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
         android:orientation="horizontal"
         tools:ignore="RedundantNamespace">
 
@@ -18,15 +18,18 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:gravity="start"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:orientation="vertical"
+            tools:ignore="RtlSymmetry">
 
             <TextView
                 android:id="@+id/datetime_by_days"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 tools:ignore="NestedWeights"
                 tools:text="2022-03-04" />
 
@@ -35,15 +38,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 tools:text="Rain, Partially cloudy" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/icon_by_days"
             android:layout_width="0dp"
-            android:layout_height="64dp"
+            android:layout_height="72dp"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             tools:ignore="ContentDescription" />
@@ -52,26 +54,28 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:gravity="end"
+            android:paddingStart="64dp"
+            android:paddingTop="16dp"
+            android:orientation="vertical"
+            tools:ignore="RtlSymmetry">
 
             <TextView
                 android:id="@+id/temp_max"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 tools:ignore="NestedWeights"
-                tools:text="20 \u2103 \u21E1" />
+                tools:text="20 \u2103\u21E1" />
 
             <TextView
                 android:id="@+id/temp_min"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textSize="12sp"
-                tools:text="2 \u2103 \u21E3" />
+                android:textSize="11sp"
+                tools:text="2 \u2103\u21E3" />
         </LinearLayout>
 
     </LinearLayout>
@@ -80,8 +84,103 @@
         android:id="@+id/layoutExpand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="8dp"
         android:orientation="vertical"
         android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start"
+            android:paddingStart="16dp"
+            tools:ignore="RtlSymmetry">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/wind_speed"
+                android:textSize="11sp" />
+            <TextView
+                android:id="@+id/windspeed_daily"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingStart="16dp"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start"
+            android:paddingStart="16dp"
+            tools:ignore="RtlSymmetry">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/humidity"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/humidity_daily"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingStart="16dp"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start"
+            android:paddingStart="16dp"
+            tools:ignore="RtlSymmetry">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/rainfall_probability"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/precipprob_daily"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingStart="16dp"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start"
+            android:paddingStart="16dp"
+            tools:ignore="RtlSymmetry">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/sunrise_sunset"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/sunrise_sunset"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingStart="16dp"
+                android:textSize="11sp" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/hourly_list"

@@ -1,9 +1,11 @@
 package com.example.android.localweatherwithfragment.Adapter;
 
+import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+import android.widget.TextView;
 
 public class Animations {
 
@@ -14,6 +16,13 @@ public class Animations {
             view.setBackgroundColor(0x0000FF00);
         }
     }*/
+    public static void setTextBold(TextView textView){
+        textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+    }
+
+    public static void setTextNormal(TextView textView){
+        textView.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+    }
 
     public static void expand(View view) {
         Animation animation = expandAction(view);
